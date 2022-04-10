@@ -7,7 +7,18 @@ GET http://localhost:3005/api/posts
 GET http://localhost:3005/api/posts/3
 
 ###
+GET http://localhost:3005/api/cars
 
+###
+POST http://localhost:3005/api/cars
+Content-Type: application/json
+
+{
+    "brand": "Lexus"
+}
+
+
+###
 POST http://localhost:3005/api/posts
 Content-Type: application/json
 
