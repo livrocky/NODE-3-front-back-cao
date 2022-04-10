@@ -1,0 +1,17 @@
+GET http://localhost:3005/
+
+###
+GET http://localhost:3005/api/posts
+
+###
+GET http://localhost:3005/api/posts/3
+
+###
+
+POST http://localhost:3005/api/posts
+Content-Type: application/json
+
+{
+    "title": "Node js",
+    "body": "Node is using express NEW POST"
+}
