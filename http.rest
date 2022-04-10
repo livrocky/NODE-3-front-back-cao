@@ -17,7 +17,6 @@ Content-Type: application/json
     "brand": "Lexus"
 }
 
-
 ###
 POST http://localhost:3005/api/posts
 Content-Type: application/json

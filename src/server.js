@@ -17,6 +17,7 @@ app.use(express.json());
 app.get("/", (request, response) => {
   response.json("Hello world");
 });
+//POSTO DALIS//
 
 //VADINAMA ISRORINE FUNCKCIJA
 app.get("/api/posts", postsController);
@@ -28,8 +29,20 @@ function postsController(request, response) {
 app.get("/api/posts/3", (request, response) => {
   const postId = 3;
   const found = findById(posts, postId);
+  //JEIGU NERANDA ID - ISMETA ZINUTE
+  const ats = found === false ? "User not found" : found;
+  response.json(ats);
 
   response.json(found);
+});
+
+//SUKURTI POST//
+app.post("/api/posts", (request, response) => {
+  const newPostObj = request.body;
+  console.log("newPostObj===", newPostObj);
+  //ISIDEDAM NAUJA OBJ I MASYVA
+  posts.push(newPostObj);
+  response.json("trying to create post");
 });
 
 //CAO DALIS - SUSIKURTI CARS ARRAY, JI PADUOTI SU GET IR POST
@@ -40,17 +53,12 @@ app.get("/api/cars", (request, response) => {
 
 app.post("/api/cars", (request, response) => {
   const newCarObj = request.body;
+  console.log("newCarObj===", newCarObj);
   cars.push(newCarObj);
-  response.json("Created a post");
-});
-
-//SUKURTI POST//
-app.post("/api/posts", (request, response) => {
-  const newPostObj = request.body;
-  console.log("newPostObj===", newPostObj);
-  //ISIDEDAM NAUJA OBJ I MASYVA
-  posts.push(newPostObj);
-  response.json("trying to create post");
+  response.status(201).json({
+    success: true,
+    msg: "Car brand created",
+  });
 });
 
 app.listen(port, () => console.log("Howdy express is online", port));

@@ -9,7 +9,31 @@
 </head>
 
 <body>
+    <h1>CAR BRANDS</h1>
+    <button id="create">Create car brand</button>
 
+    <script>
+        const btn = document.getElementById('create');
+
+        btn.addEventListener('click', async () => {
+            const newPostData = {
+                brand: 'Lexus',
+            };
+            const resp = await fetch('http://localhost:3005/api/cars', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(newPostData),
+            });
+            const dataInJs = await resp.json();
+            console.log('dataInJs ===', dataInJs);
+            if (dataInJs.success) {
+                alert(dataInJs.msg);
+            }
+        });
+    </script>
+    </script>
 </body>
 
 </html>
