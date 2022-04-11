@@ -54,7 +54,7 @@ app.get("/api/cars", (request, response) => {
 app.post("/api/cars", (request, response) => {
   const newCarObj = request.body;
   console.log("newCarObj===", newCarObj);
-  cars.push(newCarObj);
+  cars.push(newCarObj.brand);
   response.status(201).json({
     success: true,
     msg: "Car brand created",
